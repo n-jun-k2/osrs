@@ -1,0 +1,14 @@
+services:
+  qemu:
+    build:
+      context: .
+    env_file:
+      - .env
+    tty: true
+    volumes:
+      - ./work:/mnt/work
+      - /tmp/.X11-unix/:/tmp/.X11-unix/
+    environment:
+      - DISPLAY=${DISPLAY}
+    working_dir: /mnt/work
+    entrypoint: ["bash"]
